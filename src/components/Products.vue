@@ -165,7 +165,7 @@ export default {
         
         // Inicializar cantidades
         this.products.forEach(product => {
-          this.$set(this.quantities, product.id, 1);
+          this.quantities[product.id] = 1;
         });
       } catch (err) {
         this.error = err.message || 'Error al cargar productos';
@@ -215,13 +215,13 @@ export default {
     increaseQuantity(productId) {
       const product = this.products.find(p => p.id === productId);
       if (this.quantities[productId] < product.stock) {
-        this.$set(this.quantities, productId, this.quantities[productId] + 1);
+        this.quantities[productId] = this.quantities[productId] + 1;
       }
     },
 
     decreaseQuantity(productId) {
       if (this.quantities[productId] > 1) {
-        this.$set(this.quantities, productId, this.quantities[productId] - 1);
+        this.quantities[productId] = this.quantities[productId] - 1;
       }
     },
 
@@ -239,7 +239,7 @@ export default {
       this.showToast();
 
       // Resetear cantidad a 1
-      this.$set(this.quantities, product.id, 1);
+      this.quantities[product.id] = 1;
     },
 
     showToast() {

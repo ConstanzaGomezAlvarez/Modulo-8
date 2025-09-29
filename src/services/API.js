@@ -2,57 +2,58 @@
 const products = [
   {
     id: 1,
-    name: "Smartphone Samsung Galaxy",
-    price: 299.99,
-    description: "Smartphone con pantalla de 6.5 pulgadas",
-    image: "/assets/img/001.png",
-    category: "Electronics",
-    stock: 10
+    name: "Gabinete Crystal Black RGB E-ATX Vidrio Templado USB 3.0",
+    description: "Diseño elegante con panel lateral de vidrio templado, excelente flujo de aire y espacio optimizado para configuraciones de alto rendimiento.",
+    price: 49990,
+    category: "Gabinetes",
+    stock: 30,
+    image: "assets/img/001.png"
   },
   {
     id: 2,
-    name: "Laptop Dell Inspiron",
-    price: 799.99,
-    description: "Laptop con procesador Intel i5 y 8GB RAM",
-    image: "/assets/img/002.png",
-    category: "Electronics",
-    stock: 5
+    name: "Audífonos Dual Blade 7.1 USB RGB",
+    description: "Sonido envolvente, micrófono con cancelación de ruido y diseño ergonómico para largas sesiones de juego con máxima inmersión.",
+    price: 29990,
+    category: "Audio",
+    stock: 0,
+    image: "assets/img/002.png"
   },
   {
     id: 3,
-    name: "Auriculares Bluetooth",
-    price: 59.99,
-    description: "Auriculares inalámbricos con cancelación de ruido",
-    image: "/assets/img/003.png",
-    category: "Electronics",
-    stock: 15
-  },
+    name: "Teclado Gamer TKL Kronos RGB Mecánico",
+    description: "Formato compacto sin pad numérico, retroiluminación RGB y switches mecánicos para precisión y velocidad en cada partida.",
+    price: 19990,
+    category: "Accesorios",
+    stock: 4,
+    image: "assets/img/003.png"
+  }
+  ,
   {
     id: 4,
-    name: "Camiseta Deportiva",
-    price: 24.99,
-    description: "Camiseta transpirable para deportes",
-    image: "/assets/img/004.webp",
-    category: "Clothing",
-    stock: 20
+    name: "Silla Gamer Argo 180°",
+    description: "Elección perfecta para gamers, streamers y profesionales que buscan ergonomía y estilo. Con materiales premium y ajustes avanzados, esta silla te brindará soporte durante largas horas de uso.",
+    price: 129990,
+    category: "Mobiliario",
+    stock: 4,
+    image: "assets/img/004.webp"
   },
   {
     id: 5,
-    name: "Zapatillas Running",
-    price: 89.99,
-    description: "Zapatillas cómodas para correr",
-    image: "/assets/img/005.webp",
-    category: "Clothing",
-    stock: 8
+    name: "Escritorio Mesa Gamer Griffin",
+    description: "Está diseñado para gamers y profesionales que exigen resistencia, espacio inteligente y un estilo agresivo. Con un tablero de 120cm x 60cm y 75cm de altura, ofrece el equilibrio perfecto entre amplitud y ergonomía.",
+    price: 69990,
+    category: "Mobiliario",
+    stock: 5,
+    image: "assets/img/005.webp"
   },
   {
     id: 6,
-    name: "Reloj Inteligente",
-    price: 199.99,
-    description: "Smartwatch con monitor de actividad",
-    image: "/assets/img/006.jpg",
-    category: "Electronics",
-    stock: 12
+    name: "Micrófono Profesional Mistral",
+    description: "Captura de voz nítida con condensador de alta sensibilidad, iluminación RGB personalizable y diseño ideal para streaming, podcasting o gaming.",
+    price: 39990,
+    category: "Audio",
+    stock: 32,
+    image: "assets/img/006.jpg"
   }
 ];
 

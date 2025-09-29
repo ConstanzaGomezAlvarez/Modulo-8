@@ -52,14 +52,5 @@
     "categoria": "Audio",
     "stock": 32,
     "imagen": "assets/img/006.jpg"
-  },
-  {
-    "id": 7,
-    "nombre": "Gabinete DarkLED Async",
-    "precio": 19990,
-    "categoria": "Gabinetes",
-    "description": "LedGab",
-    "imagen": "AA",
-    "stock": 20
   }
 ]
