@@ -1,103 +1,66 @@
 <template>
-  <form @submit.prevent="emitAddProduct" class="mb-4">
-    <div class="row g-3">
-      <div class="col-md-6 col-lg-4">
-        <input
-          type="text"
-          class="form-control"
-          v-model="newProduct.nombre"
-          placeholder="Nombre"
-          required
-        />
+  <div class="card p-3">
+    <h4 class="card-title">Agregar Producto</h4>
+    <form @submit.prevent="onSubmit">
+      <div class="mb-2">
+        <label class="form-label">Código</label>
+        <input v-model="producto.codigo" class="form-control" required />
       </div>
-      <div class="col-md-6 col-lg-4">
-        <input
-          type="number"
-          class="form-control"
-          v-model.number="newProduct.precio"
-          placeholder="Precio"
-          required
-        />
+      <div class="mb-2">
+        <label class="form-label">Nombre</label>
+        <input v-model="producto.nombre" class="form-control" required />
       </div>
-      <div class="col-md-6 col-lg-4">
-        <input
-          type="text"
-          class="form-control"
-          v-model="newProduct.categoria"
-          placeholder="Categoría"
-          required
-        />
+      <div class="mb-2">
+        <label class="form-label">Stock</label>
+        <input v-model.number="producto.stock" type="number" min="0" class="form-control" required />
       </div>
-      <div class="col-md-6 col-lg-4">
-        <input
-          type="number"
-          class="form-control"
-          v-model.number="newProduct.stock"
-          placeholder="Cantidad"
-          required
-        />
+      <div class="mb-2">
+        <label class="form-label">Precio</label>
+        <input v-model.number="producto.precio" type="number" min="0" class="form-control" required />
       </div>
-      <div class="col-md-6 col-lg-4">
-        <input
-          type="text"
-          class="form-control"
-          v-model="newProduct.description"
-          placeholder="Descripción"
-          required
-        />
+      <div class="mb-2">
+        <label class="form-label">Color</label>
+        <input v-model="producto.color" class="form-control" />
       </div>
-      <div class="col-md-6 col-lg-4">
-        <input
-          type="text"
-          class="form-control"
-          v-model="newProduct.imagen"
-          placeholder="URL Imagen"
-          required
-        />
+      <div class="form-check mb-3">
+        <input v-model="producto.destacado" class="form-check-input" type="checkbox" id="destacado" />
+        <label class="form-check-label" for="destacado">Destacado</label>
       </div>
-      <div class="col-12 text-end">
-        <button type="submit" class="btn btn-success px-4">Agregar</button>
+      <div>
+        <button class="btn btn-success me-2" type="submit">Agregar</button>
+        <button class="btn btn-secondary" type="button" @click="reset">Limpiar</button>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </template>
 
-<script setup>
-import { ref } from "vue";
-
-const emit = defineEmits(["add-product"]);
-
-const newProduct = ref({
-  nombre: "",
-  precio: null,
-  categoria: "",
-  stock: null,
-  description: "",
-  imagen: "",
-});
-
-const emitAddProduct = () => {
-  if (!newProduct.value.nombre || newProduct.value.precio === null || newProduct.value.precio === "") {
-    alert("Nombre y precio son obligatorios");
-    return;
+<script>
+export default {
+  name: 'AddProductForm',
+  data() {
+    return {
+      producto: {
+        codigo: '',
+        nombre: '',
+        stock: 0,
+        precio: 0,
+        color: '',
+        destacado: false
+      }
+    }
+  },
+  methods: {
+    onSubmit() {
+      if (!this.producto.codigo || !this.producto.nombre) return
+      this.$store.dispatch('addProduct', { ...this.producto })
+      this.$router.push({ name: 'StoreProducts' })
+    },
+    reset() {
+      this.producto = { codigo: '', nombre: '', stock: 0, precio: 0, color: '', destacado: false }
+    }
   }
-  if (newProduct.value.stock === null || newProduct.value.stock === "") {
-    alert("La cantidad es obligatoria");
-    return;
-  }
-  emit("add-product", { ...newProduct.value });
-  // Limpiar el formulario
-  newProduct.value = {
-    nombre: "",
-    precio: null,
-    categoria: "",
-    stock: null,
-    description: "",
-    imagen: "",
-  };
-};
+}
 </script>
 
 <style scoped>
-/* Estilos específicos para AddProductForm si es necesario */
 </style>

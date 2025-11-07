@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-    <!-- Navbar con props del carrito -->
     <Navbar 
       :cartItems="cartItems"
       @toggle-cart="toggleCartModal"
       @user-logged-out="handleUserLoggedOut"
     />
     
-    <!-- Modal de bienvenida (solo si no hay usuario logueado) -->
     <WelcomeModal v-if="!currentUser && !hideWelcomeModal" @close="hideWelcomeModal = true" />
     
-    <!-- Contenido principal -->
     <main class="main-content">
       <router-view 
         @add-to-cart="addToCart"
@@ -18,10 +15,8 @@
       />
     </main>
     
-    <!-- Footer -->
     <Footer />
     
-    <!-- Modal del carrito -->
     <CartDetail 
       :cartItems="cartItems"
       :isVisible="showCartModal"

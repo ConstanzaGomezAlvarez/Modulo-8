@@ -3,6 +3,9 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import CatalogPage from '../views/CatalogPage.vue'
 import AdminPage from '../views/AdminPage.vue'
+import StoreHome from '../views/StoreHome.vue'
+import ProductList from '../views/ProductList.vue'
+import StoreAdd from '../views/StoreAdd.vue'
 import { Auth } from '../services/Auth.js'
 
 const routes = [
@@ -13,6 +16,24 @@ const routes = [
     meta: {
       title: 'Inicio - Mi Tienda'
     }
+  },
+  {
+    path: '/store',
+    name: 'StoreHome',
+    component: StoreHome,
+    meta: { title: 'TecnoChile - Inicio' }
+  },
+  {
+    path: '/store/products',
+    name: 'StoreProducts',
+    component: ProductList,
+    meta: { title: 'TecnoChile - Productos' }
+  },
+  {
+    path: '/store/add',
+    name: 'StoreAdd',
+    component: StoreAdd,
+    meta: { title: 'TecnoChile - Agregar Producto' }
   },
   {
     path: '/login',
