@@ -34,6 +34,14 @@ export default createStore({
     featuredProducts(state) {
       return state.productos.filter(p => !!p.destacado)
     }
+    ,
+    // Comprueba si existe un producto por código
+    hasProductCode: (state) => (code) => {
+      if (code == null) return false
+      const c = code.toString().trim()
+      if (!c) return false
+      return state.productos.some(p => p.codigo.toString().trim() === c)
+    }
   },
   mutations: {
     setFiltro(state, texto) {

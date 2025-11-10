@@ -1,6 +1,9 @@
 <template>
   <div class="card p-3">
     <h4 class="card-title">Agregar Producto</h4>
+    <div v-if="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
     <form @submit.prevent="onSubmit">
       <div class="mb-2">
         <label class="form-label">Código</label>
@@ -47,12 +50,28 @@ export default {
         color: '',
         destacado: false
       }
+      ,
+      errorMessage: ''
     }
   },
   methods: {
     onSubmit() {
-      if (!this.producto.codigo || !this.producto.nombre) return
-      this.$store.dispatch('addProduct', { ...this.producto })
+      // Normalizar código
+      const code = (this.producto.codigo || '').toString().trim()
+      if (!code || !this.producto.nombre) {
+        this.errorMessage = 'Código y nombre son obligatorios.'
+        return
+      }
+
+      // Validación: evitar códigos duplicados
+      if (this.$store.getters.hasProductCode(code)) {
+        this.errorMessage = `El código "${code}" ya existe. Usa uno diferente.`
+        return
+      }
+
+      // Limpiar mensaje de error y enviar
+      this.errorMessage = ''
+      this.$store.dispatch('addProduct', { ...this.producto, codigo: code })
       this.$router.push({ name: 'StoreProducts' })
     },
     reset() {
